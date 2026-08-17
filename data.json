@@ -1,0 +1,80 @@
+[
+  {
+    "id": "ocha-humanitarian-service-directory",
+    "category": "aid",
+    "title_ar": "دليل الخدمات الإنسانية للفلسطينيين",
+    "title_ja": "OCHA 人道支援サービス・ディレクトリ",
+    "body_ar": "دليل عام يجمع خدمات المساعدة وخطوط المساعدة والرسائل الإنسانية. استخدم البحث داخل الدليل للعثور على الخدمة المناسبة، وتحقق من أحدث التفاصيل قبل الذهاب إلى أي موقع.",
+    "body_ja": "OCHAと人道支援パートナーが公開している、支援サービス・ヘルプライン・重要メッセージの検索ディレクトリです。場所へ向かう前に、必ずディレクトリ内の最新情報を確認してください。",
+    "verified_at": "2026-08-17T08:30:00Z",
+    "content_date": "2026-08-17",
+    "source_name": "OCHA oPt — Humanitarian Service Directory",
+    "source_url": "https://opt-aap-iasd.azurewebsites.net/GazaQR",
+    "status": "verified"
+  },
+  {
+    "id": "ocha-protection-service-directory",
+    "category": "aid",
+    "title_ar": "دليل خدمات الحماية",
+    "title_ja": "OCHA 保護サービス・ディレクトリ",
+    "body_ar": "منصة عامة لخدمات الحماية المتاحة في الأرض الفلسطينية المحتلة. تتضمن أنواع الخدمات ومعلومات الإحالة. بعض أنواع الإحالة المتخصصة يجب أن تتم بواسطة مختصين مدرّبين.",
+    "body_ja": "保護支援の種類や紹介先を確認できるOCHAの公開ディレクトリです。児童保護・MHPSS・GBVなど一部の専門的紹介は、訓練された専門家を通す必要があります。",
+    "verified_at": "2026-08-17T08:30:00Z",
+    "content_date": "2026-08-17",
+    "source_name": "OCHA oPt — Protection Cluster Service Directory",
+    "source_url": "https://www.ochaopt.org/page/protection-cluster-service-directory-dashboard",
+    "status": "verified"
+  },
+  {
+    "id": "sawa-protection-hotline",
+    "category": "important",
+    "title_ar": "خط سوا للمساعدة والحماية",
+    "title_ja": "SAWA 保護・相談ホットライン",
+    "body_ar": "تذكر صفحة دليل خدمات الحماية التابعة لـ OCHA أن خط سوا هو 121 أو +972 594040121 للاستفسارات المتعلقة بالحماية، بما في ذلك الاستفسارات ذات الصلة بالعنف القائم على النوع الاجتماعي في غزة.",
+    "body_ja": "OCHAの保護サービス案内では、ガザの保護相談（GBV関連を含む）のSAWAホットラインとして「121」または「+972 594040121」が案内されています。",
+    "verified_at": "2026-08-17T08:30:00Z",
+    "content_date": "2026-08-17",
+    "source_name": "OCHA oPt — Protection Cluster Service Directory",
+    "source_url": "https://www.ochaopt.org/page/protection-cluster-service-directory-dashboard",
+    "status": "verified"
+  },
+  {
+    "id": "who-herams-gaza",
+    "category": "medical",
+    "title_ar": "حالة الخدمات الصحية في غزة — WHO HeRAMS",
+    "title_ja": "ガザ医療サービス稼働状況 — WHO HeRAMS",
+    "body_ar": "تنشر منظمة الصحة العالمية HeRAMS لمتابعة حالة وحدات تقديم الخدمات الصحية وتوفر الخدمات والعوائق. أحدث تقرير تم التحقق منه هنا نُشر في 14 يوليو 2026 ويعتمد على بيانات حتى 30 يونيو 2026.",
+    "body_ja": "WHOのHeRAMSは、ガザの医療提供施設の稼働状況、利用可能な医療サービス、提供上の障害を追跡しています。ここで確認した最新版は2026年7月14日公開、データ基準日は6月30日です。",
+    "verified_at": "2026-08-17T08:30:00Z",
+    "content_date": "2026-06-30",
+    "source_name": "WHO — HeRAMS Gaza, June 2026",
+    "source_url": "https://www.who.int/publications/m/item/herams-opt-gaza-infographics-2026-06",
+    "status": "verified"
+  },
+  {
+    "id": "wfp-palestine-emergency",
+    "category": "food",
+    "title_ar": "معلومات برنامج الأغذية العالمي عن المساعدة الغذائية",
+    "title_ja": "WFP ガザ食料支援情報",
+    "body_ar": "يذكر برنامج الأغذية العالمي أنه يصل شهرياً إلى نحو 1.5 مليون شخص في غزة عبر طرود غذائية ودقيق القمح والخبز والوجبات الساخنة وخدمات التغذية والمساعدة النقدية. راجع صفحة WFP للحصول على أحدث تحديث.",
+    "body_ja": "WFPは、食料小包、小麦粉、パン、温かい食事、栄養支援、現金支援などを通じて、ガザで毎月約150万人に支援を届けていると案内しています。最新状況はWFP公式ページで確認してください。",
+    "verified_at": "2026-08-17T08:30:00Z",
+    "content_date": "2026-08-17",
+    "source_name": "World Food Programme — Palestine Emergency",
+    "source_url": "https://www.wfp.org/emergencies/palestine-emergency",
+    "status": "verified"
+  },
+  {
+    "id": "unrwa-health-services",
+    "category": "medical",
+    "title_ar": "خدمات الأونروا الصحية في غزة",
+    "title_ja": "UNRWA ガザ医療サービス",
+    "body_ar": "أفادت الأونروا في تقريرها بأن مراكز صحية ومرافق مؤقتة وفرقاً طبية متنقلة تواصل تقديم خدمات الرعاية الأولية، إضافة إلى خدمات التطبيب عن بعد. قد تتغير أماكن وقدرة الخدمات، لذا تحقق من أحدث إعلان رسمي قبل التوجه.",
+    "body_ja": "UNRWAは、保健センター・臨時施設・移動医療チームによる一次医療に加え、遠隔医療も提供していると報告しています。場所や提供能力は変わる可能性があるため、利用前に最新の公式案内を確認してください。",
+    "verified_at": "2026-08-17T08:30:00Z",
+    "content_date": "2026-06-15",
+    "source_name": "UNRWA — Situation Report #226",
+    "source_url": "https://www.unrwa.org/resources/reports/unrwa-situation-report-226-humanitarian-crisis-gaza-strip-and-occupied-west-bank",
+    "status": "verified"
+  }
+]
