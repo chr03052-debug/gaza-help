@@ -76,5 +76,18 @@
     "source_name": "UNRWA — Situation Report #229",
     "source_url": "https://www.unrwa.org/resources/reports/unrwa-situation-report-229-humanitarian-crisis-gaza-strip-and-occupied-west-bank",
     "status": "verified"
-  }
+},
+{
+  "id": "ocha-wash-gaza",
+  "category": "aid",
+  "title_ar": "معلومات المياه والصرف الصحي والنظافة في غزة",
+  "title_ja": "ガザの水・衛生支援情報",
+  "body_ar": "تنشر OCHA معلومات محدثة عن أنشطة المياه والصرف الصحي والنظافة في غزة. قد تتغير الأوضاع بسرعة، لذا تحقق من أحدث المعلومات الرسمية قبل الاعتماد عليها.",
+  "body_ja": "OCHAは、ガザの水・衛生（WASH）分野について、支援活動や人道上のニーズに関する情報を公開しています。状況は急変する可能性があるため、利用前に最新の公式情報を確認してください。",
+  "verified_at": "2026-08-18T00:00:00Z",
+  "content_date": "2026-08-18",
+  "source_name": "OCHA oPt — Humanitarian Presence, Activities and Service Points",
+  "source_url": "https://www.ochaopt.org/page/humanitarian-presence-activities-and-service-points-gaza-strip",
+  "status": "verified"
+}  
 ]
