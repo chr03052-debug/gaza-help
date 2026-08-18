@@ -65,17 +65,17 @@
     "status": "verified"
   },
   {
-    "id": "unrwa-health-services",
-    "category": "medical",
-    "title_ar": "خدمات الأونروا الصحية في غزة",
-    "title_ja": "UNRWA ガザ医療サービス",
-    "body_ar": "وفقًا لتقرير الأونروا رقم 229، وحتى 5 يوليو/تموز 2026، كانت الأونروا تدير ستة مراكز صحية وأربع نقاط صحية مؤقتة في غزة، كما كانت 61 فرقة طبية متنقلة تقدم خدمات الرعاية الصحية الأولية في 28 نقطة طبية. واستمرت أيضًا خدمات الرعاية الصحية عن بُعد. وقد تتغير أعداد المرافق والفرق بحسب الاحتياجات وإمكانية الوصول والوضع الأمني، لذا يُرجى التحقق من أحدث المعلومات الرسمية قبل التوجه للحصول على الخدمة.",
-    "body_ja": "UNRWAは、保健センター・臨時施設・移動医療チームによる一次医療に加え、遠隔医療も提供していると報告しています。場所や提供能力は変わる可能性があるため、利用前に最新の公式案内を確認してください。",
-    "verified_at": "2026-08-17T08:30:00Z",
-    "content_date": "2026-07-07",
-    "source_name": "UNRWA — Situation Report #229",
-    "source_url": "https://www.unrwa.org/resources/reports/unrwa-situation-report-229-humanitarian-crisis-gaza-strip-and-occupied-west-bank",
-    "status": "verified"
+  "id": "unrwa-health-services",
+  "category": "medical",
+  "title_ar": "خدمات الأونروا الصحية في غزة",
+  "title_ja": "UNRWA ガザ医療サービス",
+  "body_ar": "تواصل الأونروا تقديم خدمات الرعاية الصحية الأولية في غزة. قد تتغير الخدمات المتاحة ومواقع تقديمها بسبب الظروف الميدانية، لذلك يُرجى التحقق من أحدث المعلومات الرسمية للأونروا قبل التوجه للحصول على الرعاية الصحية.",
+  "body_ja": "UNRWAは、ガザで一次医療サービスを提供しています。現地状況により、利用できるサービスや提供場所が変わる可能性があります。医療サービスを利用する前に、必ずUNRWAの最新の公式情報を確認してください。",
+  "verified_at": "2026-08-18T04:56:00Z",
+  "content_date": "2026-07-07",
+  "source_name": "UNRWA — Situation Report #229",
+  "source_url": "https://www.unrwa.org/resources/reports/unrwa-situation-report-229-humanitarian-crisis-gaza-strip-and-occupied-west-bank",
+  "status": "verified"
 },
 {
   "id": "ocha-wash-gaza",
