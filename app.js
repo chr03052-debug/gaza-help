@@ -1,7 +1,8 @@
 const state = {
   lang: localStorage.getItem("gh-lang") || "ar",
   category: "all",
-  items: []
+  items: [],
+  usingCachedData: false
 };
 
 const ui = {
@@ -30,12 +31,12 @@ const labels = {
     subtitle: "معلومات خفيفة • بدون تسجيل • تعمل دون اتصال",
 
     search: "ابحث في المعلومات…",
-    updated: "آخر تحديث محلي",
+    updated: "آخر تحديث محفوظ على هذا الجهاز",
     refresh: "تحديث",
     share: "مشاركة",
     copied: "تم النسخ",
     source: "المصدر",
-    verified: "تم التحقق من الرابط",
+    verified: "تاريخ التحقق من الرابط",
     contentDate: "تاريخ المعلومات",
     empty: "لا توجد معلومات منشورة حالياً.",
 
@@ -49,6 +50,10 @@ const labels = {
     offlineText:
       "يتم عرض آخر معلومات محفوظة على هذا الجهاز. قد تكون المعلومات قديمة، لذا تحقق من المصدر الرسمي عند عودة الاتصال.",
 
+    cachedTitle: "تعذر الحصول على أحدث البيانات:",
+    cachedText:
+      "يتم عرض المعلومات المحفوظة سابقاً على هذا الجهاز. تحقق من المصدر الرسمي قبل الاعتماد عليها.",
+
     categoriesLabel: "الفئات",
     categoryAll: "الكل",
     categoryMedical: "🏥 الرعاية الطبية",
@@ -58,10 +63,15 @@ const labels = {
 
     safetyTitle: "مهم",
     safetyText:
-      "لا يجمع هذا التطبيق اسمك أو رقم هاتفك أو موقعك الجغرافي، ولا توجد خريطة لتتبع الأشخاص أو حسابات مستخدمين. يتم عرض معلومات من مصادر عامة، وقد تتغير الخدمات الميدانية بسرعة. تحقق دائماً من أحدث المعلومات الرسمية قبل اتخاذ قرار أو التوجه إلى موقع.",
+      "لا يجمع هذا التطبيق اسمك أو رقم هاتفك أو موقعك الجغرافي، ولا توجد خريطة لتتبع الأشخاص أو حسابات مستخدمين. يتم عرض معلومات من مصادر عامة، وقد تتغير الخدمات الميدانية بسرعة. تاريخ التحقق يعني أن الرابط والمصدر تمت مراجعتهما في ذلك التاريخ، ولا يعني أن الخدمة لا تزال متاحة الآن. تحقق دائماً من أحدث المعلومات الرسمية والظروف على الأرض قبل اتخاذ قرار أو التوجه إلى موقع.",
+
+    shareWarning:
+      "تنبيه: قد تتغير الخدمات والظروف بسرعة. تاريخ التحقق من الرابط لا يعني أن الخدمة متاحة الآن. تحقق من أحدث المعلومات الرسمية قبل اتخاذ قرار أو التوجه إلى موقع.",
+
+    site: "موقع معلومات مساعدة غزة",
 
     footer:
-      "نسخة أولية مفتوحة وبسيطة للاستخدام منخفض البيانات."
+      "نسخة أولية مستقلة ومفتوحة وبسيطة للاستخدام منخفض البيانات. هذا الموقع غير تابع لـ OCHA أو WHO أو WFP أو UNRWA ولا تديره أو تعتمده أي منها."
   },
 
   ja: {
@@ -70,7 +80,7 @@ const labels = {
     subtitle: "軽量な情報 • 登録不要 • オフライン対応",
 
     search: "情報を検索…",
-    updated: "端末内の最終更新",
+    updated: "この端末に保存された最終更新",
     refresh: "更新",
     share: "共有",
     copied: "コピーしました",
@@ -89,6 +99,10 @@ const labels = {
     offlineText:
       "この端末に最後に保存された情報を表示しています。情報が古い可能性があるため、通信が戻ったら公式情報を再確認してください。",
 
+    cachedTitle: "最新データを取得できませんでした:",
+    cachedText:
+      "この端末に以前保存された情報を表示しています。利用前に必ず公式情報源を確認してください。",
+
     categoriesLabel: "カテゴリー",
     categoryAll: "すべて",
     categoryMedical: "🏥 医療",
@@ -98,14 +112,27 @@ const labels = {
 
     safetyTitle: "重要",
     safetyText:
-      "このアプリは氏名・電話番号・現在地を収集せず、人を追跡する地図やユーザーアカウントもありません。公開情報源からの情報を表示していますが、現地のサービス状況は急に変化する可能性があります。判断や移動の前には、必ず最新の公式情報を確認してください。",
+      "このアプリは氏名・電話番号・現在地を収集せず、人を追跡する地図やユーザーアカウントもありません。公開情報源からの情報を表示していますが、現地のサービス状況は急に変化する可能性があります。リンク確認日は、その日にリンクと情報源を確認したことを示すもので、現在もサービスが利用できることを意味しません。判断や移動の前には、必ず最新の公式情報と現地状況を確認してください。",
+
+    shareWarning:
+      "注意：サービスや現地状況は急に変化する可能性があります。リンク確認日は現在のサービス提供を保証するものではありません。判断や移動の前に、必ず最新の公式情報を確認してください。",
+
+    site: "ガザ支援情報サイト",
 
     footer:
-      "低データ通信での利用を想定した、シンプルな試作版です。"
+      "低データ通信での利用を想定した独立・非公式のシンプルな試作版です。OCHA・WHO・WFP・UNRWAが運営、承認するものではありません。"
   }
 };
 
 function fmtDate(iso) {
+  if (!iso) return "—";
+
+  const date = new Date(iso);
+
+  if (!Number.isFinite(date.getTime())) {
+    return String(iso);
+  }
+
   try {
     return new Intl.DateTimeFormat(
       state.lang === "ar" ? "ar" : "ja-JP",
@@ -113,9 +140,9 @@ function fmtDate(iso) {
         dateStyle: "medium",
         timeStyle: "short"
       }
-    ).format(new Date(iso));
+    ).format(date);
   } catch {
-    return iso;
+    return String(iso);
   }
 }
 
@@ -128,11 +155,17 @@ function textFor(item, key) {
 }
 
 function isStale(iso) {
-  const age = Date.now() - new Date(iso).getTime();
-  return (
-    Number.isFinite(age) &&
-    age > 48 * 60 * 60 * 1000
-  );
+  if (!iso) return false;
+
+  const time = new Date(iso).getTime();
+
+  if (!Number.isFinite(time)) {
+    return false;
+  }
+
+  const age = Date.now() - time;
+
+  return age > 48 * 60 * 60 * 1000;
 }
 
 function allowedItem(item) {
@@ -155,27 +188,31 @@ function updateStaticText() {
   if (ui.title) ui.title.textContent = t.title;
   if (ui.subtitle) ui.subtitle.textContent = t.subtitle;
 
-  ui.langBtn.textContent =
-    state.lang === "ar" ? "日本語" : "العربية";
+  if (ui.langBtn) {
+    ui.langBtn.textContent =
+      state.lang === "ar" ? "日本語" : "العربية";
 
-  ui.langBtn.setAttribute(
-    "aria-label",
-    state.lang === "ar"
-      ? "تغيير اللغة"
-      : "言語を切り替える"
-  );
-
-  ui.search.placeholder = t.search;
-  ui.refresh.textContent = t.refresh;
-  ui.heroText.textContent = t.hero;
-
-  if (ui.offlineTitle) {
-    ui.offlineTitle.textContent = t.offlineTitle;
+    ui.langBtn.setAttribute(
+      "aria-label",
+      state.lang === "ar"
+        ? "تغيير اللغة"
+        : "言語を切り替える"
+    );
   }
 
-  if (ui.offlineText) {
-    ui.offlineText.textContent = t.offlineText;
+  if (ui.search) {
+    ui.search.placeholder = t.search;
   }
+
+  if (ui.refresh) {
+    ui.refresh.textContent = t.refresh;
+  }
+
+  if (ui.heroText) {
+    ui.heroText.textContent = t.hero;
+  }
+
+  updateNotice();
 
   if (ui.categories) {
     ui.categories.setAttribute(
@@ -194,6 +231,7 @@ function updateStaticText() {
 
   document.querySelectorAll(".cat").forEach(btn => {
     const category = btn.dataset.category;
+
     if (categoryLabels[category]) {
       btn.textContent = categoryLabels[category];
     }
@@ -212,13 +250,37 @@ function updateStaticText() {
   }
 }
 
+function updateNotice() {
+  if (!ui.offline) return;
+
+  const t = labels[state.lang];
+
+  const offline = !navigator.onLine;
+  const showNotice = offline || state.usingCachedData;
+
+  ui.offline.hidden = !showNotice;
+
+  if (!showNotice) return;
+
+  if (ui.offlineTitle) {
+    ui.offlineTitle.textContent =
+      offline ? t.offlineTitle : t.cachedTitle;
+  }
+
+  if (ui.offlineText) {
+    ui.offlineText.textContent =
+      offline ? t.offlineText : t.cachedText;
+  }
+}
+
 function render() {
   updateStaticText();
 
   const t = labels[state.lang];
-  const q = ui.search.value
-    .trim()
-    .toLowerCase();
+
+  const q = ui.search
+    ? ui.search.value.trim().toLowerCase()
+    : "";
 
   const filtered = state.items
     .filter(allowedItem)
@@ -237,6 +299,8 @@ function render() {
         (!q || hay.toLowerCase().includes(q))
       );
     });
+
+  if (!ui.cards) return;
 
   if (!filtered.length) {
     ui.cards.innerHTML =
@@ -303,6 +367,7 @@ function render() {
           <div class="card-actions">
             <button
               class="action"
+              type="button"
               data-share="${escapeAttr(item.id)}">
               ${escapeHtml(t.share)}
             </button>
@@ -341,37 +406,62 @@ function escapeAttr(s = "") {
 
 async function shareItem(id, btn) {
   const item = state.items.find(
-    x => x.id === id
+    x => String(x.id) === String(id)
   );
 
   if (!item) return;
 
   const t = labels[state.lang];
 
-  const text =
-    `${textFor(item, "title")}\n` +
-    `${textFor(item, "body")}\n` +
-    `${t.verified}: ${fmtDate(
-      item.verified_at
-    )}\n` +
-    `${t.source}: ${
-      item.source_name || "—"
-    }` +
-    `${
-      item.source_url
-        ? "\n" + item.source_url
-        : ""
-    }`;
+  const siteUrl =
+    "https://chr03052-debug.github.io/gaza-help/";
+
+  const parts = [
+    textFor(item, "title"),
+    textFor(item, "body"),
+    `${t.verified}: ${fmtDate(item.verified_at)}`
+  ];
+
+  if (item.content_date) {
+    parts.push(
+      `${t.contentDate}: ${item.content_date}`
+    );
+  }
+
+  parts.push(
+    `${t.source}: ${item.source_name || "—"}`
+  );
+
+  if (item.source_url) {
+    parts.push(item.source_url);
+  }
+
+  parts.push("");
+  parts.push(t.shareWarning);
+  parts.push("");
+  parts.push(`${t.site}: ${siteUrl}`);
+
+  const text = parts.join("\n");
 
   if (navigator.share) {
     try {
-      await navigator.share({ text });
+      await navigator.share({
+        title: textFor(item, "title"),
+        text
+      });
+
       return;
-    } catch (e) {}
+    } catch (e) {
+      if (e && e.name === "AbortError") {
+        return;
+      }
+    }
   }
 
   try {
     await navigator.clipboard.writeText(text);
+
+    if (!btn) return;
 
     const old = btn.textContent;
     btn.textContent = t.copied;
@@ -379,10 +469,16 @@ async function shareItem(id, btn) {
     setTimeout(() => {
       btn.textContent = old;
     }, 1200);
-  } catch (e) {}
+  } catch (e) {
+    console.warn("Share/copy failed", e);
+  }
 }
 
 async function loadData() {
+  if (ui.refresh) {
+    ui.refresh.disabled = true;
+  }
+
   try {
     const res = await fetch(
       "./data.json",
@@ -390,13 +486,21 @@ async function loadData() {
     );
 
     if (!res.ok) {
-      throw new Error("fetch failed");
+      throw new Error(
+        `HTTP ${res.status}`
+      );
     }
 
     const data = await res.json();
 
-    state.items =
-      Array.isArray(data) ? data : [];
+    if (!Array.isArray(data)) {
+      throw new Error(
+        "Invalid data format"
+      );
+    }
+
+    state.items = data;
+    state.usingCachedData = false;
 
     localStorage.setItem(
       "gh-data",
@@ -412,11 +516,27 @@ async function loadData() {
       localStorage.getItem("gh-data");
 
     try {
-      state.items = cached
+      const parsed = cached
         ? JSON.parse(cached)
         : [];
+
+      state.items =
+        Array.isArray(parsed)
+          ? parsed
+          : [];
     } catch {
       state.items = [];
+    }
+
+    state.usingCachedData = true;
+
+    console.warn(
+      "Latest data could not be loaded. Using saved data.",
+      e
+    );
+  } finally {
+    if (ui.refresh) {
+      ui.refresh.disabled = false;
     }
   }
 
@@ -425,6 +545,8 @@ async function loadData() {
 }
 
 function updateLastSync() {
+  if (!ui.lastSync) return;
+
   const sync =
     localStorage.getItem("gh-sync");
 
@@ -434,7 +556,7 @@ function updateLastSync() {
 }
 
 function setOnlineState() {
-  ui.offline.hidden = navigator.onLine;
+  updateNotice();
 }
 
 document
@@ -456,37 +578,46 @@ document
     });
   });
 
-ui.langBtn.addEventListener(
-  "click",
-  () => {
-    state.lang =
-      state.lang === "ar"
-        ? "ja"
-        : "ar";
+if (ui.langBtn) {
+  ui.langBtn.addEventListener(
+    "click",
+    () => {
+      state.lang =
+        state.lang === "ar"
+          ? "ja"
+          : "ar";
 
-    localStorage.setItem(
-      "gh-lang",
-      state.lang
-    );
+      localStorage.setItem(
+        "gh-lang",
+        state.lang
+      );
 
-    updateLastSync();
-    render();
-  }
-);
+      updateLastSync();
+      render();
+    }
+  );
+}
 
-ui.search.addEventListener(
-  "input",
-  render
-);
+if (ui.search) {
+  ui.search.addEventListener(
+    "input",
+    render
+  );
+}
 
-ui.refresh.addEventListener(
-  "click",
-  loadData
-);
+if (ui.refresh) {
+  ui.refresh.addEventListener(
+    "click",
+    loadData
+  );
+}
 
 window.addEventListener(
   "online",
-  setOnlineState
+  () => {
+    setOnlineState();
+    loadData();
+  }
 );
 
 window.addEventListener(
@@ -500,7 +631,12 @@ if ("serviceWorker" in navigator) {
     () => {
       navigator.serviceWorker
         .register("./sw.js")
-        .catch(() => {});
+        .catch(error => {
+          console.warn(
+            "Service worker registration failed",
+            error
+          );
+        });
     }
   );
 }
