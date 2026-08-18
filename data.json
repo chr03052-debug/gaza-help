@@ -1,100 +1,13 @@
-[
-  {
-    "id": "ocha-humanitarian-service-directory",
-    "category": "aid",
-    "title_ar": "معلومات المساعدات الإنسانية من OCHA",
-    "title_ja": "OCHA 人道支援情報",
-    "body_ar": "يمكنكم الاطلاع على المعلومات المتعلقة بالمساعدات الإنسانية في غزة والأرض الفلسطينية المحتلة، والتي ينشرها مكتب الأمم المتحدة لتنسيق الشؤون الإنسانية (OCHA). قد تتغير الأوضاع والخدمات بسرعة، لذا يُرجى التحقق من أحدث المعلومات في المصدر الرسمي.",
-    "body_ja": "OCHA（国連人道問題調整事務所）が公開している、ガザを含むパレスチナ被占領地域の人道支援情報を確認できます。状況やサービスは急速に変化する可能性があるため、最新情報は公式情報源で確認してください。",
-    "verified_at": "2026-08-17T08:30:00Z",
-    "source_name": "OCHA oPt — Official Website",
-    "source_url": "https://www.ochaopt.org/",
-    "status": "verified"
-  },
-  {
-    "id": "ocha-protection-service-directory",
-    "category": "aid",
-    "title_ar": "دليل خدمات الحماية",
-    "title_ja": "OCHA 保護サービス・ディレクトリ",
-    "body_ar": "دليل عام لخدمات الحماية في الأرض الفلسطينية المحتلة. يتضمن معلومات عن أنواع الخدمات والإحالة. بعض أنواع الإحالة المتخصصة يجب أن تتم من خلال مختصين مدرّبين. يُرجى التحقق من أحدث المعلومات في المصدر الرسمي قبل الاعتماد عليها.",
-    "body_ja": "OCHAが公開している保護サービスのディレクトリで、支援の種類や紹介に関する情報を確認できます。児童保護、MHPSS、GBVなど一部の専門的な紹介は、訓練された専門家を通す必要があります。利用前に最新の公式情報を確認してください。",
-    "verified_at": "2026-08-17T08:30:00Z",
-    "source_name": "OCHA oPt — Protection Cluster Service Directory",
-    "source_url": "https://www.ochaopt.org/page/protection-cluster-service-directory-dashboard",
-    "status": "verified"
-  },
-  {
-    "id": "sawa-protection-hotline",
-    "category": "important",
-    "title_ar": "خط سوا للمساعدة والحماية",
-    "title_ja": "SAWA 保護・相談ホットライン",
-    "body_ar": "وفقاً لدليل خدمات الحماية المنشور من OCHA، يُذكر خط سوا على الرقم 121 أو +972 594040121 للاستفسارات المتعلقة بالحماية في غزة، بما في ذلك الاستفسارات المتعلقة بالعنف القائم على النوع الاجتماعي. قد تتغير معلومات الاتصال، لذا يُرجى التحقق من دليل OCHA الرسمي قبل الاستخدام.",
-    "body_ja": "OCHAが公開する保護サービス案内では、ガザの保護相談（GBV関連を含む）のSAWAホットラインとして「121」または「+972 594040121」が掲載されています。連絡先は変更される可能性があるため、利用前にOCHAの公式案内で最新情報を確認してください。",
-    "verified_at": "2026-08-17T08:30:00Z",
-    "source_name": "OCHA oPt — Protection Cluster Service Directory",
-    "source_url": "https://www.ochaopt.org/page/protection-cluster-service-directory-dashboard",
-    "status": "verified"
-  },
-  {
-    "id": "who-herams-gaza",
-    "category": "medical",
-    "title_ar": "حالة الخدمات الصحية في غزة — WHO HeRAMS",
-    "title_ja": "ガザ医療サービス稼働状況 — WHO HeRAMS",
-    "body_ar": "تنشر منظمة الصحة العالمية بيانات HeRAMS لمتابعة حالة وحدات تقديم الخدمات الصحية وتوفر الخدمات والعوائق التي تؤثر في تقديمها. التقرير المرتبط هنا نُشر في 14 يوليو 2026 ويستند إلى بيانات حتى 30 يونيو 2026. قد تكون الأوضاع قد تغيرت منذ ذلك التاريخ، لذا تحقق من أحدث معلومات منظمة الصحة العالمية قبل اتخاذ قرار بشأن الرعاية الصحية.",
-    "body_ja": "WHOのHeRAMSは、ガザの医療提供施設の稼働状況、利用可能な医療サービス、提供上の障害などを追跡しています。ここで案内しているレポートは2026年7月14日公開で、データ基準日は2026年6月30日です。その後状況が変化している可能性があるため、医療に関する判断の前にWHOの最新情報も確認してください。",
-    "verified_at": "2026-08-17T08:30:00Z",
-    "content_date": "2026-06-30",
-    "source_name": "WHO — HeRAMS Gaza, June 2026",
-    "source_url": "https://www.who.int/publications/m/item/herams-opt-gaza-infographics-2026-06",
-    "status": "verified"
-  },
-  {
-    "id": "wfp-palestine-emergency",
-    "category": "food",
-    "title_ar": "معلومات برنامج الأغذية العالمي عن المساعدة الغذائية",
-    "title_ja": "WFP ガザ食料支援情報",
-    "body_ar": "تنشر صفحة الطوارئ التابعة لبرنامج الأغذية العالمي معلومات عن المساعدة الغذائية في غزة، بما في ذلك الطرود الغذائية ودقيق القمح والخبز والوجبات الساخنة وخدمات التغذية والمساعدة النقدية. قد تتغير أعداد المستفيدين والخدمات المتاحة بسرعة، لذا تحقق من أحدث تحديث على صفحة WFP الرسمية.",
-    "body_ja": "WFPの緊急支援ページでは、ガザにおける食料小包、小麦粉、パン、温かい食事、栄養支援、現金支援などについて情報を公開しています。支援人数や利用可能なサービスは変化する可能性があるため、最新状況はWFP公式ページで確認してください。",
-    "verified_at": "2026-08-17T08:30:00Z",
-    "source_name": "World Food Programme — Palestine Emergency",
-    "source_url": "https://www.wfp.org/emergencies/palestine-emergency",
-    "status": "verified"
-  },
-  {
-    "id": "unrwa-health-services",
-    "category": "medical",
-    "title_ar": "خدمات الأونروا الصحية في غزة",
-    "title_ja": "UNRWA ガザ医療サービス",
-    "body_ar": "يفيد تقرير الأونروا المرتبط هنا بأنها كانت تقدم خدمات الرعاية الصحية الأولية في غزة خلال الفترة التي يغطيها التقرير. قد تتغير الخدمات المتاحة ومواقع تقديمها بسبب الظروف الميدانية. لا يُفترض أن المعلومات الواردة في هذا التقرير القديم تعكس الوضع الحالي، لذا تحقق من أحدث معلومات الأونروا الرسمية قبل التوجه للحصول على الرعاية الصحية.",
-    "body_ja": "ここで案内しているUNRWAのレポートでは、対象期間中にガザで一次医療サービスが提供されていたことが報告されています。現地状況により、利用できるサービスや提供場所は変化する可能性があります。この過去のレポートが現在の状況を示しているとは限らないため、医療サービスを利用する前にUNRWAの最新の公式情報を確認してください。",
-    "verified_at": "2026-08-18T04:56:00Z",
-    "content_date": "2026-07-07",
-    "source_name": "UNRWA — Situation Report #229",
-    "source_url": "https://www.unrwa.org/resources/reports/unrwa-situation-report-229-humanitarian-crisis-gaza-strip-and-occupied-west-bank",
-    "status": "verified"
-  },
-  {
-    "id": "ocha-wash-gaza",
-    "category": "aid",
-    "title_ar": "معلومات المياه والصرف الصحي والنظافة في غزة",
-    "title_ja": "ガザの水・衛生支援情報",
-    "body_ar": "تنشر OCHA معلومات عامة عن الأنشطة الإنسانية ونقاط الخدمات في غزة، بما في ذلك المعلومات المتعلقة بالمياه والصرف الصحي والنظافة. عرض المعلومات أو نقاط الخدمات لا يعني أن الخدمة متاحة حالياً أو أنه يمكن الوصول إلى الموقع بأمان. تحقق من أحدث المعلومات الرسمية والظروف على الأرض قبل الاعتماد عليها.",
-    "body_ja": "OCHAは、ガザの人道支援活動やサービス拠点について、水・衛生（WASH）分野を含む情報を公開しています。情報やサービス拠点が掲載されていることは、現在サービスを利用できることや、その場所へ安全に到達できることを意味しません。利用前に最新の公式情報と現地状況を確認してください。",
-    "verified_at": "2026-08-18T00:00:00Z",
-    "source_name": "OCHA oPt — Humanitarian Presence, Activities and Service Points",
-    "source_url": "https://www.ochaopt.org/page/humanitarian-presence-activities-and-service-points-gaza-strip",
-    "status": "verified"
-  },
-  {
-    "id": "ocha-shelter-gaza",
-    "category": "important",
-    "title_ar": "معلومات النزوح والمأوى في غزة",
-    "title_ja": "ガザの避難・シェルター関連情報",
-    "body_ar": "تنشر OCHA معلومات عن الأنشطة الإنسانية ونقاط الخدمات والمعلومات المتعلقة بالمأوى في قطاع غزة. عرض موقع أو معلومة هنا لا يعني أن الموقع آمن حالياً، ولا يضمن توفر المأوى أو الخدمات أو إمكانية الوصول إليه. قد تتغير الظروف بسرعة. قبل اتخاذ قرار بشأن الانتقال أو النزوح، لا تعتمد على هذه المعلومات وحدها وتحقق دائماً من أحدث المعلومات الرسمية والظروف على الأرض.",
-    "body_ja": "OCHAは、ガザ地区の人道支援活動、サービス拠点、シェルター関連情報を公開しています。場所や情報が掲載されていることは、その場所が現在安全であること、シェルターやサービスを利用できること、または安全に到達できることを保証するものではありません。現地状況は急速に変化する可能性があります。移動や避難を判断する際は、この情報だけに頼らず、必ず最新の公式情報と現地状況を確認してください。",
-    "verified_at": "2026-08-18T00:00:00Z",
-    "source_name": "OCHA oPt — Humanitarian Presence, Activities and Service Points",
-    "source_url": "https://www.ochaopt.org/page/humanitarian-presence-activities-and-service-points-gaza-strip",
-    "status": "verified"
-  }
-]
+{
+  "id": "unrwa-health-services",
+  "category": "medical",
+  "title_ar": "خدمات الأونروا الصحية في غزة",
+  "title_ja": "UNRWA ガザ医療サービス",
+  "body_ar": "وفقاً لتقرير الأونروا رقم 229، كانت الأونروا تقدم خدمات الرعاية الصحية الأولية في غزة خلال فترة التقرير. وقد تتغير المرافق والخدمات المتاحة بسرعة بسبب الظروف الميدانية. يُرجى التحقق من أحدث المعلومات الرسمية للأونروا قبل التوجه للحصول على الرعاية الصحية.",
+  "body_ja": "UNRWA Situation Report #229では、報告対象期間中にガザで一次医療サービスが提供されていたことが報告されています。現地状況により、利用できる施設やサービスは急速に変化する可能性があります。医療サービスを利用する前に、UNRWAの最新の公式情報を確認してください。",
+  "verified_at": "2026-08-18T04:56:00Z",
+  "content_date": "2026-07-07",
+  "source_name": "UNRWA — Situation Report #229",
+  "source_url": "https://www.unrwa.org/resources/reports/unrwa-situation-report-229-humanitarian-crisis-gaza-strip-and-occupied-west-bank",
+  "status": "verified"
+}
