@@ -8,9 +8,52 @@
   />
   <title>المصادر / 情報源</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .sources-page .hero{
+      padding:18px;
+    }
+
+    .sources-page .hero > p{
+      margin:0 0 14px;
+    }
+
+    .sources-page .hero > p[dir="ltr"]{
+      text-align:left;
+    }
+
+    .sources-page ul{
+      list-style:none;
+      padding:0;
+      margin:18px 0;
+      display:grid;
+      gap:10px;
+    }
+
+    .sources-page li{
+      background:var(--soft);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px 14px;
+      direction:ltr;
+      text-align:left;
+    }
+
+    .sources-page li a{
+      color:var(--text);
+      font-weight:600;
+      text-decoration:underline;
+      text-underline-offset:2px;
+      overflow-wrap:anywhere;
+    }
+
+    .sources-page .back-link{
+      margin-top:18px;
+    }
+  </style>
 </head>
 
-<body>
+<body class="sources-page">
   <main>
     <section class="hero">
       <h1>المصادر / 情報源</h1>
@@ -109,7 +152,7 @@
         </li>
       </ul>
 
-      <p>
+      <p class="back-link">
         <a href="./">← العودة / 戻る</a>
       </p>
     </section>
