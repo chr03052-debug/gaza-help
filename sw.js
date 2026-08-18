@@ -1,4 +1,4 @@
-const CACHE_NAME = "gaza-help-v5";
+const CACHE_NAME = "gaza-help-v6";
 
 const STATIC_FILES = [
   "./",
@@ -15,30 +15,40 @@ const STATIC_FILES = [
   "./icon-512.png"
 ];
 
+// インストール
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_FILES);
+    caches.open(CACHE_NAME).then(async (cache) => {
+      // 1ファイルの失敗で全部失敗しないように個別に保存
+      await Promise.allSettled(
+        STATIC_FILES.map((file) =>
+          cache.add(new Request(file, { cache: "reload" }))
+        )
+      );
     })
   );
 
   self.skipWaiting();
 });
 
+// 古いキャッシュを削除
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
+    (async () => {
+      const cacheNames = await caches.keys();
+
+      await Promise.all(
         cacheNames
           .filter((name) => name !== CACHE_NAME)
           .map((name) => caches.delete(name))
       );
-    })
-  );
 
-  self.clients.claim();
+      await self.clients.claim();
+    })()
+  );
 });
 
+// 通信処理
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
@@ -48,83 +58,133 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
 
-  // 外部サイトへの通信はService Workerで処理しない
+  // 外部サイトはService Workerで処理しない
   if (url.origin !== self.location.origin) {
     return;
   }
 
-  // HTMLページはオンラインを優先し、失敗時だけキャッシュを使う
+  // HTMLページ
+  // オンライン時は必ず最新を確認
+  // 通信失敗時だけ保存済みページを表示
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request)
-        .then((response) => {
+      (async () => {
+        try {
+          const response = await fetch(request, {
+            cache: "no-store"
+          });
+
           if (response && response.ok) {
             const copy = response.clone();
-
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(request, copy);
-            });
+            const cache = await caches.open(CACHE_NAME);
+            await cache.put(request, copy);
           }
 
           return response;
-        })
-        .catch(async () => {
+        } catch (error) {
           const cachedPage = await caches.match(request);
 
           if (cachedPage) {
             return cachedPage;
           }
 
-          return caches.match("./index.html");
-        })
+          const fallback = await caches.match("./index.html");
+
+          if (fallback) {
+            return fallback;
+          }
+
+          return new Response(
+            "Offline",
+            {
+              status: 503,
+              headers: {
+                "Content-Type": "text/plain; charset=utf-8"
+              }
+            }
+          );
+        }
+      })()
     );
 
     return;
   }
 
-  // data.json は可能な限り最新版を取得
+  // data.json
+  // オンラインなら常に最新データを取得
   if (url.pathname.endsWith("/data.json")) {
     event.respondWith(
-      fetch(request)
-        .then((response) => {
+      (async () => {
+        try {
+          const response = await fetch(request, {
+            cache: "no-store"
+          });
+
           if (!response || !response.ok) {
             throw new Error("Network response was not OK");
           }
 
           const copy = response.clone();
+          const cache = await caches.open(CACHE_NAME);
 
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, copy);
-          });
+          await cache.put(request, copy);
 
           return response;
-        })
-        .catch(() => caches.match(request))
+        } catch (error) {
+          const cached = await caches.match(request);
+
+          if (cached) {
+            return cached;
+          }
+
+          return new Response("[]", {
+            status: 200,
+            headers: {
+              "Content-Type": "application/json; charset=utf-8"
+            }
+          });
+        }
+      })()
     );
 
     return;
   }
 
   // CSS・JS・画像など
+  // すぐキャッシュを表示しつつ、裏で最新版に更新
   event.respondWith(
-    caches.match(request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
+    (async () => {
+      const cached = await caches.match(request);
+
+      const networkPromise = fetch(request, {
+        cache: "no-cache"
+      })
+        .then(async (response) => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            const cache = await caches.open(CACHE_NAME);
+
+            await cache.put(request, copy);
+          }
+
+          return response;
+        })
+        .catch(() => null);
+
+      if (cached) {
+        event.waitUntil(networkPromise);
+        return cached;
       }
 
-      return fetch(request).then((response) => {
-        if (!response || !response.ok) {
-          return response;
-        }
+      const networkResponse = await networkPromise;
 
-        const copy = response.clone();
+      if (networkResponse) {
+        return networkResponse;
+      }
 
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(request, copy);
-        });
-
-        return response;
+      return new Response("", {
+        status: 503
       });
-    })
+    })()
   );
 });
