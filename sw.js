@@ -1,4 +1,4 @@
-const CACHE_NAME = "gaza-help-v4";
+const CACHE_NAME = "gaza-help-v5";
 
 const STATIC_FILES = [
   "./",
