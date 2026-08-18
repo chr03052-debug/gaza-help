@@ -89,5 +89,19 @@
   "source_name": "OCHA oPt — Humanitarian Presence, Activities and Service Points",
   "source_url": "https://www.ochaopt.org/page/humanitarian-presence-activities-and-service-points-gaza-strip",
   "status": "verified"
-}  
+},
+{
+  "id": "ocha-shelter-gaza",
+  "category": "important",
+  "title_ar": "معلومات المأوى في غزة",
+  "title_ja": "ガザの避難所・シェルター情報",
+  "body_ar": "للحصول على أحدث المعلومات حول الملاجئ وأماكن الإيواء في غزة، يرجى الرجوع إلى المعلومات الرسمية المنشورة من OCHA. قد تتغير الأوضاع بسرعة، لذا تحقق من المصدر قبل التحرك.",
+  "body_ja": "ガザの避難所・一時滞在場所については、OCHAが公開する最新の公式情報を確認してください。状況は急速に変化する可能性があるため、移動する前に必ず出典の最新情報を確認してください。",
+  "verified_at": "2026-08-18T00:00:00Z",
+  "content_date": "2026-08-18",
+  "source_name": "OCHA oPt — Humanitarian Information",
+  "source_url": "https://www.ochaopt.org/",
+  "status": "verified"
+}
+
 ]
