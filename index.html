@@ -1,66 +1,172 @@
 <!doctype html>
-
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,viewport-fit=cover"
+  />
   <meta name="theme-color" content="#111111" />
-  <meta name="description" content="تطبيق خفيف يعمل دون اتصال لعرض معلومات مساعدة موثوقة." />
+  <meta
+    name="description"
+    content="معلومات إنسانية عامة من مصادر رسمية لمساعدة الأشخاص المتأثرين بالأزمة في غزة."
+  />
+
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+
   <title>مساعدة غزة</title>
 </head>
+
 <body>
   <header class="topbar">
     <div>
       <h1>مساعدة غزة</h1>
-      <p class="subtitle">معلومات خفيفة • بدون تسجيل • تعمل دون اتصال</p>
+      <p class="subtitle">
+        معلومات خفيفة • بدون تسجيل • تعمل دون اتصال
+      </p>
     </div>
-    <button id="langBtn" class="small-btn" aria-label="تغيير اللغة">日本語</button>
+
+    <button
+      id="langBtn"
+      class="small-btn"
+      type="button"
+      aria-label="تغيير اللغة"
+    >
+      日本語
+    </button>
   </header>
 
   <main>
-    <section class="notice" id="offlineNotice" hidden>
+    <section
+      class="notice"
+      id="offlineNotice"
+      hidden
+      aria-live="polite"
+    >
       <strong>وضع عدم الاتصال:</strong>
-      <span>يتم عرض آخر معلومات محفوظة على هذا الجهاز.</span>
+      <span>
+        يتم عرض آخر معلومات محفوظة على هذا الجهاز.
+        قد تكون المعلومات قديمة، لذا تحقق من المصدر
+        الرسمي عند عودة الاتصال.
+      </span>
     </section>
 
     <section class="hero">
       <p id="heroText">
-        يعرض هذا النموذج معلومات مساعدة تجريبية فقط. لا تعتمد عليه للطوارئ أو الحركة الآمنة.
+        المعلومات المنشورة هنا يجب أن تكون علنية
+        ويمكن التحقق منها. لا يستخدم هذا التطبيق
+        لتتبع الأشخاص أو نشر مواقع حساسة.
       </p>
+
       <div class="meta-row">
-        <span id="lastSync">آخر تحديث محلي: —</span>
-        <button id="refreshBtn" class="small-btn">تحديث</button>
+        <span id="lastSync">
+          آخر تحديث محلي: —
+        </span>
+
+        <button
+          id="refreshBtn"
+          class="small-btn"
+          type="button"
+        >
+          تحديث
+        </button>
       </div>
     </section>
 
-    <section class="categories" aria-label="الفئات">
-      <button class="cat active" data-category="all">الكل</button>
-      <button class="cat" data-category="medical">🏥 الرعاية الطبية</button>
-      <button class="cat" data-category="food">💧 الغذاء والماء</button>
-      <button class="cat" data-category="aid">🤝 المساعدة</button>
-      <button class="cat" data-category="important">⚠️ معلومات مهمة</button>
+    <section
+      class="categories"
+      aria-label="الفئات"
+    >
+      <button
+        class="cat active"
+        type="button"
+        data-category="all"
+      >
+        الكل
+      </button>
+
+      <button
+        class="cat"
+        type="button"
+        data-category="medical"
+      >
+        🏥 الرعاية الطبية
+      </button>
+
+      <button
+        class="cat"
+        type="button"
+        data-category="food"
+      >
+        💧 الغذاء والماء
+      </button>
+
+      <button
+        class="cat"
+        type="button"
+        data-category="aid"
+      >
+        🤝 المساعدة
+      </button>
+
+      <button
+        class="cat"
+        type="button"
+        data-category="important"
+      >
+        ⚠️ معلومات مهمة
+      </button>
     </section>
 
     <section class="search-wrap">
-      <input id="searchInput" type="search" placeholder="ابحث في المعلومات…" autocomplete="off" />
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="ابحث في المعلومات…"
+        aria-label="البحث في المعلومات"
+        autocomplete="off"
+      />
     </section>
 
-    <section id="cards" class="cards" aria-live="polite"></section>
+    <section
+      id="cards"
+      class="cards"
+      aria-live="polite"
+    ></section>
 
     <section class="safety">
       <h2>مهم</h2>
+
       <p>
-        لا يجمع هذا التطبيق اسمك أو موقعك. لا توجد خريطة تتبع أو حسابات مستخدمين.
-        المعلومات المعروضة في هذا النموذج أمثلة فقط إلى أن تتم إضافة مصادر موثوقة ومحدّثة.
+        لا يجمع هذا التطبيق اسمك أو رقم هاتفك أو
+        موقعك الجغرافي، ولا توجد خريطة لتتبع الأشخاص
+        أو حسابات مستخدمين. يتم عرض معلومات من مصادر
+        عامة، وقد تتغير الخدمات الميدانية بسرعة.
+        تحقق دائماً من أحدث المعلومات الرسمية قبل
+        اتخاذ قرار أو التوجه إلى موقع.
       </p>
     </section>
   </main>
 
   <footer>
-    <p>نسخة أولية مفتوحة وبسيطة للاستخدام منخفض البيانات.</p>
+    <p>
+      نسخة أولية مفتوحة وبسيطة للاستخدام منخفض البيانات.
+    </p>
+
+    <nav
+      class="footer-links"
+      aria-label="روابط إضافية"
+    >
+      <a href="privacy.html">
+        الخصوصية / プライバシー
+      </a>
+
+      <a href="sources.html">
+        المصادر / 情報源
+      </a>
+    </nav>
   </footer>
 
   <script src="app.js"></script>
