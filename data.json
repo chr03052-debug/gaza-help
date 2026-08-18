@@ -90,18 +90,18 @@
   "source_url": "https://www.ochaopt.org/page/humanitarian-presence-activities-and-service-points-gaza-strip",
   "status": "verified"
 },
-{
-  "id": "ocha-shelter-gaza",
-  "category": "important",
-  "title_ar": "معلومات المأوى في غزة",
-  "title_ja": "ガザの避難所・シェルター情報",
-  "body_ar": "للحصول على أحدث المعلومات حول الملاجئ وأماكن الإيواء في غزة، يرجى الرجوع إلى المعلومات الرسمية المنشورة من OCHA. قد تتغير الأوضاع بسرعة، لذا تحقق من المصدر قبل التحرك.",
-  "body_ja": "ガザの避難所・一時滞在場所については、OCHAが公開する最新の公式情報を確認してください。状況は急速に変化する可能性があるため、移動する前に必ず出典の最新情報を確認してください。",
-  "verified_at": "2026-08-18T00:00:00Z",
-  "content_date": "2026-08-18",
-  "source_name": "OCHA oPt — Humanitarian Information",
-  "source_url": "https://www.ochaopt.org/",
-  "status": "verified"
-}
+  {
+    "id": "ocha-shelter-gaza",
+    "category": "important",
+    "title_ar": "معلومات النزوح والمأوى في غزة",
+    "title_ja": "ガザの避難・シェルター関連情報",
+    "body_ar": "تنشر OCHA معلومات عن الأنشطة الإنسانية ونقاط الخدمات والمعلومات المتعلقة بالمأوى في قطاع غزة. هذه المعلومات لا تعني أن المواقع المذكورة آمنة حالياً ولا تضمن توفر المأوى أو الخدمات فيها. قد تتغير الأوضاع والخدمات المتاحة بسرعة. قبل اتخاذ قرار بشأن الانتقال أو النزوح، يُرجى عدم الاعتماد على هذه الصفحة وحدها والتحقق دائماً من أحدث المعلومات الرسمية والظروف على الأرض.",
+    "body_ja": "OCHAは、ガザ地区の人道支援活動、サービス拠点、シェルター関連情報を公開しています。この情報は「現在安全な避難所」を保証するものではなく、シェルターやサービスが利用できることを保証するものでもありません。現地状況は急速に変化する可能性があります。移動や避難を判断する際は、この情報だけに頼らず、必ず最新の公式情報と現地状況を確認してください。",
+    "verified_at": "2026-08-18T00:00:00Z",
+    "source_name": "OCHA oPt — Humanitarian Presence, Activities and Service Points",
+    "source_url": "https://www.ochaopt.org/page/humanitarian-presence-activities-and-service-points-gaza-strip",
+    "status": "verified"
+  }
+
 
 ]
