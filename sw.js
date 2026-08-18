@@ -1,4 +1,4 @@
-const CACHE_NAME = "gaza-help-v2";
+const CACHE_NAME = "gaza-help-v4";
 
 const STATIC_FILES = [
   "./",
@@ -6,7 +6,13 @@ const STATIC_FILES = [
   "./styles.css",
   "./app.js",
   "./data.json",
-  "./manifest.webmanifest"
+  "./manifest.webmanifest",
+  "./privacy.html",
+  "./sources.html",
+  "./icon.svg",
+  "./icon-180.png",
+  "./icon-192.png",
+  "./icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -47,7 +53,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // HTMLページ
+  // HTMLページはオンラインを優先し、失敗時だけキャッシュを使う
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request)
@@ -76,7 +82,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // data.json は可能な限り最新データを取得
+  // data.json は可能な限り最新版を取得
   if (url.pathname.endsWith("/data.json")) {
     event.respondWith(
       fetch(request)
