@@ -1,4 +1,4 @@
-const CACHE_NAME = "gaza-help-v8";
+くconst CACHE_NAME = "gaza-help-v8";
 
 const STATIC_FILES = [
   "./",
@@ -110,46 +110,25 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // data.json
-  // オンラインなら常に最新データを取得
-  if (url.pathname.endsWith("/data.json")) {
-    event.respondWith(
-      (async () => {
-        try {
-          const response = await fetch(request, {
-            cache: "no-store"
-          });
-
-          if (!response || !response.ok) {
-            throw new Error("Network response was not OK");
-          }
-
-          const copy = response.clone();
-          const cache = await caches.open(CACHE_NAME);
-
-          await cache.put(request, copy);
-
-          return response;
-        } catch (error) {
-          const cached = await caches.match(request);
-
-          if (cached) {
-            return cached;
-          }
-
-          return new Response("[]", {
-            status: 200,
-            headers: {
-              "Content-Type": "application/json; charset=utf-8"
-            }
-          });
+ // data.json
+// オンライン時だけ取得する。
+// オフライン時は失敗させ、app.js 側の保存済みデータを使用する。
+if (url.pathname.endsWith("/data.json")) {
+  event.respondWith(
+    fetch(request, {
+      cache: "no-store"
+    }).catch(() =>
+      new Response("Offline", {
+        status: 503,
+        headers: {
+          "Content-Type": "text/plain; charset=utf-8"
         }
-      })()
-    );
+      })
+    )
+  );
 
-    return;
-  }
-
+  return;
+}
   // CSS・JS・画像など
   // すぐキャッシュを表示しつつ、裏で最新版に更新
   event.respondWith(
