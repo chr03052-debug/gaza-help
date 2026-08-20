@@ -1,0 +1,55 @@
+name: "サイトへの意見・修正提案"
+description: "gaza-helpの表示、内容、安全上の懸念、公式情報源の変更を知らせるフォームです"
+title: "[提案] "
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ご協力ありがとうございます。
+
+        **氏名、電話番号、メールアドレス、正確な現在地、公開すべきでない支援場所などは書かないでください。**
+
+        このフォームは緊急連絡には使用できません。
+        人命・安全に関わる変更は、公式情報源と照合してから1項目ずつ確認します。
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: "提案の種類"
+      options:
+        - "表示や操作の問題"
+        - "掲載内容の修正"
+        - "公式情報源の変更"
+        - "安全またはプライバシー上の懸念"
+        - "その他"
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: "内容"
+      description: "個人情報や正確な位置情報を含めず、問題や提案を具体的に書いてください。"
+      placeholder: "例：説明が分かりにくい、公式ページのURLが変わっている"
+    validations:
+      required: true
+
+  - type: input
+    id: official-source
+    attributes:
+      label: "公式情報源のURL"
+      description: "掲載内容の修正提案では、確認できる公式ページのURLを入力してください。表示や操作の問題では空欄でも構いません。"
+      placeholder: "https://..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: "公開前の確認"
+      options:
+        - label: "個人情報、正確な現在地、公開すべきでない機微な情報を含めていません"
+          required: true
+        - label: "緊急連絡ではないことを確認しました"
+          required: true
