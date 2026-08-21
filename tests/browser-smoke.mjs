@@ -31,7 +31,7 @@ try {
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
   if (overflow) throw new Error("Mobile layout has horizontal overflow");
 
-  await page.evaluate(() => document.activeElement?.blur());
+  await page.reload({ waitUntil: "networkidle" });
   await page.keyboard.press("Tab");
   const focused = await page.evaluate(() => document.activeElement?.classList.contains("skip-link"));
   if (!focused) throw new Error("Skip link is not first in keyboard order");
