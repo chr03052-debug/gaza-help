@@ -14,9 +14,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
+  validate-and-browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,5 +27,49 @@ jobs:
           node --check app.js
           node --check sw.js
           node --check tests/validate.mjs
+          node --check tests/browser-smoke.mjs
+          node --check tests/monitor-sources.mjs
       - name: Validate content, safety rules, and offline assets
         run: node tests/validate.mjs
+      - name: Install pinned browser test runtime
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run mobile, bilingual, keyboard, and offline smoke test
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/gaza-help-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then break; fi
+            sleep 0.25
+          done
+          node tests/browser-smoke.mjs
+
+  arabic-human-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require fluent human review for changed Arabic text
+        env:
+          ARABIC_REVIEWED: ${{ contains(github.event.pull_request.labels.*.name, 'arabic-reviewed') }}
+          BASE_REF: ${{ github.base_ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        shell: bash
+        run: |
+          git fetch --no-tags origin "$BASE_REF"
+          if git diff --unified=0 "origin/$BASE_REF"...HEAD -- data.json index.html app.js sources.html privacy.html |
+             grep --perl-regexp --quiet '^\+.*[\x{0600}-\x{06FF}]'; then
+            if [[ "$ARABIC_REVIEWED" != "true" ]]; then
+              if [[ ! -f .github/ARABIC_REVIEW_WAIVER ]] ||
+                 ! grep --fixed-strings --line-regexp --quiet "pull_request: $PR_NUMBER" .github/ARABIC_REVIEW_WAIVER; then
+                echo "::error::Arabic text changed. Require the arabic-reviewed label or a PR-specific owner waiver."
+                exit 1
+              fi
+              echo "::warning::Fluent Arabic review was explicitly waived by the repository owner for PR $PR_NUMBER."
+            fi
+          fi
