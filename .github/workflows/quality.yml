@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -29,6 +29,21 @@ jobs:
           node --check tests/validate.mjs\n          node --check tests/browser-smoke.mjs
       - name: Validate content, safety rules, and offline assets
         run: node tests/validate.mjs
+      - name: Require fluent Arabic review for changed Arabic text
+        if: github.event_name == 'pull_request'
+        env:
+          ARABIC_REVIEWED: ${{ contains(github.event.pull_request.labels.*.name, 'arabic-reviewed') }}
+          BASE_REF: ${{ github.base_ref }}
+        shell: bash
+        run: |
+          git fetch --no-tags origin "$BASE_REF"
+          if git diff --unified=0 "origin/$BASE_REF"...HEAD -- data.json index.html app.js sources.html privacy.html |
+             grep --perl-regexp --quiet '^\+.*[\x{0600}-\x{06FF}]'; then
+            if [[ "$ARABIC_REVIEWED" != "true" ]]; then
+              echo "::error::Arabic text changed. A fluent human reviewer must approve it and the PR must have the arabic-reviewed label."
+              exit 1
+            fi
+          fi
       - name: Install pinned browser test runtime
         run: |
           npm install --no-save playwright@1.55.0
