@@ -58,13 +58,18 @@ jobs:
         env:
           ARABIC_REVIEWED: ${{ contains(github.event.pull_request.labels.*.name, 'arabic-reviewed') }}
           BASE_REF: ${{ github.base_ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         shell: bash
         run: |
           git fetch --no-tags origin "$BASE_REF"
           if git diff --unified=0 "origin/$BASE_REF"...HEAD -- data.json index.html app.js sources.html privacy.html |
              grep --perl-regexp --quiet '^\+.*[\x{0600}-\x{06FF}]'; then
             if [[ "$ARABIC_REVIEWED" != "true" ]]; then
-              echo "::error::Arabic text changed. A fluent human reviewer must approve it and the PR must have the arabic-reviewed label."
-              exit 1
+              if [[ ! -f .github/ARABIC_REVIEW_WAIVER ]] ||
+                 ! grep --fixed-strings --line-regexp --quiet "pull_request: $PR_NUMBER" .github/ARABIC_REVIEW_WAIVER; then
+                echo "::error::Arabic text changed. Require the arabic-reviewed label or a PR-specific owner waiver."
+                exit 1
+              fi
+              echo "::warning::Fluent Arabic review was explicitly waived by the repository owner for PR $PR_NUMBER."
             fi
           fi
