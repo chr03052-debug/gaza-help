@@ -1,0 +1,5 @@
+pull_request: 6
+date: 2026-08-21
+decision: repository-owner-approved-without-fluent-arabic-review
+scope: safer-contact-guidance
+reason: The repository owner explicitly approved publication without an Arabic review notice after being informed that fluent human review was unavailable.
