@@ -1,4 +1,4 @@
-name: Monitor official source links
+name: Monitor official source links and content
 
 on:
   schedule:
@@ -10,101 +10,20 @@ permissions:
   contents: read
 
 concurrency:
-  group: monitor-official-source-links
+  group: monitor-official-sources
   cancel-in-progress: false
 
 jobs:
-  check-links:
-    name: Check official source links
+  check-sources:
+    name: Check official source reachability and content markers
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
     steps:
-      - name: Check URLs listed in data.json
-        shell: bash
-        run: |
-          set -uo pipefail
-
-          data_url="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/data.json"
-          curl \
-            --fail \
-            --location \
-            --silent \
-            --show-error \
-            --connect-timeout 20 \
-            --max-time 90 \
-            --retry 2 \
-            --retry-delay 5 \
-            --proto '=https' \
-            --proto-redir '=https' \
-            --user-agent "gaza-help-source-monitor/1.0" \
-            "$data_url" \
-            --output /tmp/gaza-help-data.json
-
-          mapfile -t urls < <(
-            python3 -c '
-          import json
-          import sys
-
-          with open(sys.argv[1], encoding="utf-8") as source_file:
-              records = json.load(source_file)
-
-          urls = sorted({
-              item["source_url"]
-              for item in records
-              if isinstance(item, dict) and item.get("source_url")
-          })
-
-          if not urls:
-              raise SystemExit("No source_url values found in data.json")
-
-          print(*urls, sep="\n")
-          ' /tmp/gaza-help-data.json
-          )
-
-          failures=0
-          manual_reviews=0
-
-          for url in "${urls[@]}"; do
-            echo "::group::Checking $url"
-
-            curl_exit=0
-            http_code="$(curl \
-              --location \
-              --silent \
-              --show-error \
-              --output /dev/null \
-              --write-out "%{http_code}" \
-              --connect-timeout 20 \
-              --max-time 90 \
-              --retry 2 \
-              --retry-delay 5 \
-              --proto '=https' \
-              --proto-redir '=https' \
-              --user-agent "gaza-help-source-monitor/1.0 (+https://github.com/${GITHUB_REPOSITORY})" \
-              "$url")" || curl_exit=$?
-
-            if [[ $curl_exit -ne 0 ]]; then
-              echo "::error title=Official source unreachable::curl exit $curl_exit for $url"
-              failures=$((failures + 1))
-            elif [[ "$http_code" =~ ^(2|3)[0-9][0-9]$ ]]; then
-              echo "OK: HTTP $http_code"
-            elif [[ "$url" == https://www.unrwa.org/* && "$http_code" == "403" ]]; then
-              echo "::warning title=UNRWA requires manual review::UNRWA blocks automated checks with HTTP 403: $url"
-              manual_reviews=$((manual_reviews + 1))
-            else
-              echo "::error title=Official source returned HTTP $http_code::$url"
-              failures=$((failures + 1))
-            fi
-
-            echo "::endgroup::"
-          done
-
-          if [[ $failures -gt 0 ]]; then
-            echo "::error::$failures official source link(s) need manual review."
-            exit 1
-          elif [[ $manual_reviews -gt 0 ]]; then
-            echo "::warning::$manual_reviews UNRWA link(s) could not be verified automatically; all other official source links are reachable."
-          else
-            echo "All official source links are reachable."
-          fi
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check monitor script syntax
+        run: node --check tests/monitor-sources.mjs
+      - name: Check official source links and expected content
+        run: node tests/monitor-sources.mjs
