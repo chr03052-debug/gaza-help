@@ -1,4 +1,4 @@
-const CACHE_NAME="gaza-help-v9";
+const CACHE_NAME="gaza-help-v10";
 const STATIC_FILES=["./","./index.html","./styles.css","./app.js","./manifest.webmanifest","./privacy.html","./sources.html","./icon.svg","./icon-180.png","./icon-192.png","./icon-512.png"];
 self.addEventListener("install",event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(STATIC_FILES)));self.skipWaiting()});
 self.addEventListener("activate",event=>{event.waitUntil((async()=>{for(const name of await caches.keys()){if(name.startsWith("gaza-help-")&&name!==CACHE_NAME)await caches.delete(name)}await self.clients.claim()})())});
