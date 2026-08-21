@@ -28,6 +28,7 @@
     <section class="hero">
       <p id="heroText">المعلومات المنشورة هنا علنية وقابلة للتحقق. لا يستخدم هذا الموقع لتتبع الأشخاص أو نشر مواقع حساسة.</p>
       <div class="meta-row"><span id="lastSync">—</span><button id="refreshBtn" class="small-btn" type="button">تحديث</button></div>
+      <p id="freshnessSummary" class="freshness-summary" aria-live="polite"></p>
       <p id="statusMessage" class="status" role="status" aria-live="polite"></p>
     </section>
     <nav class="categories" aria-label="الفئات">
@@ -37,7 +38,7 @@
       <button class="cat" type="button" data-category="aid" aria-pressed="false">🤝 المساعدة</button>
       <button class="cat" type="button" data-category="important" aria-pressed="false">⚠️ معلومات مهمة</button>
     </nav>
-    <div class="search-wrap"><label id="searchLabel" for="searchInput" class="visually-hidden">البحث</label><input id="searchInput" type="search" placeholder="ابحث في المعلومات…" autocomplete="off"></div>
+    <div class="search-wrap"><label id="searchLabel" for="searchInput" class="visually-hidden">البحث</label><input id="searchInput" type="search" placeholder="ابحث في المعلومات…" autocomplete="off"><button id="clearSearchBtn" class="clear-search" type="button" hidden>مسح البحث</button></div>
     <p id="resultCount" class="result-count" aria-live="polite"></p>
     <section id="cards" class="cards" aria-labelledby="resultCount" aria-busy="true"></section>
     <section class="safety"><h2>مهم</h2><p></p></section>
