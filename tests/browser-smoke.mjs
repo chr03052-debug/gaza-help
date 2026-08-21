@@ -31,14 +31,18 @@ try {
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
   if (overflow) throw new Error("Mobile layout has horizontal overflow");
 
-  await page.reload({ waitUntil: "networkidle" });
+  await page.reload({ waitUntil: "domcontentloaded", timeout: 10000 });
+  await page.waitForTimeout(300);
   await page.keyboard.press("Tab");
   const focused = await page.evaluate(() => document.activeElement?.classList.contains("skip-link"));
   if (!focused) throw new Error("Skip link is not first in keyboard order");
 
-  await page.evaluate(() => navigator.serviceWorker.ready);
+  await page.evaluate(() => Promise.race([
+    navigator.serviceWorker.ready,
+    new Promise((_, reject) => setTimeout(() => reject(new Error("Service worker readiness timeout")), 5000))
+  ]));
   await context.setOffline(true);
-  await page.reload({ waitUntil: "domcontentloaded" });
+  await page.reload({ waitUntil: "domcontentloaded", timeout: 10000 });
   await page.waitForSelector("#cards article");
   if ((await page.locator("#cards article").count()) !== 8) {
     throw new Error("Offline cached cards did not render");
