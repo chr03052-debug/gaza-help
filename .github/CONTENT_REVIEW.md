@@ -10,3 +10,13 @@ Before changing humanitarian information:
 6. Change one factual record at a time and verify the deployed card after merge.
 
 Automated checks validate structure and review age. They do not prove that a service is currently available or safe to reach.
+
+## Arabic review gate
+
+A pull request that changes Arabic text must not merge until:
+
+1. a fluent human reviewer checks meaning, tone, dialect suitability, and safety;
+2. the reviewer and date are recorded in the pull request without sensitive personal details;
+3. the `arabic-reviewed` label is added by a maintainer.
+
+The automated gate only proves that the label exists. It does not prove the quality or identity of the reviewer. Machine translation and automated review do not satisfy this requirement.
