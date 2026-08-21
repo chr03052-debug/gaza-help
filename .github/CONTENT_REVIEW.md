@@ -20,3 +20,7 @@ A pull request that changes Arabic text must not merge until:
 3. the `arabic-reviewed` label is added by a maintainer.
 
 The automated gate only proves that the label exists. It does not prove the quality or identity of the reviewer. Machine translation and automated review do not satisfy this requirement.
+
+## Exceptional owner waiver
+
+If publication proceeds without fluent Arabic review, the repository owner must make an explicit, PR-specific decision after being informed of the limitation. Record it in `.github/ARABIC_REVIEW_WAIVER` with the pull request number, date, scope, and reason. A waiver applies only to that pull request and must never be described as human Arabic review.
