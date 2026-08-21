@@ -2,13 +2,12 @@ import { readFile } from "node:fs/promises";
 
 const records = JSON.parse(await readFile(new URL("../data.json", import.meta.url), "utf8"));
 const signatures = new Map([
-  ["https://www.ochaopt.org/", ["occupied palestinian territory"]],
+  ["https://www.ochaopt.org/content/humanitarian-situation-report-14-august-2026", ["humanitarian situation report", "14 august 2026"]],
   ["https://www.ochaopt.org/page/protection-cluster-service-directory-dashboard", ["service directory", "sawa hotline"]],
-  ["https://www.ochaopt.org/page/humanitarian-presence-activities-and-service-points-gaza-strip", ["humanitarian presence", "service points"]],
-  ["https://sawa.ps/en/program/9", ["how can you contact us", "contact us"]],
-  ["https://www.who.int/publications/m/item/herams-opt-gaza-infographics-2026-06", ["herams", "30 june 2026"]],
+  ["https://sawa.ps/ar/program/1", ["164"]],
+  ["https://www.who.int/publications/m/item/herams-opt-gaza-infographics-2026-07", ["herams", "31 july 2026"]],
   ["https://www.wfp.org/emergencies/palestine-emergency", ["state of palestine", "food assistance"]],
-  ["https://www.unrwa.org/resources/reports/unrwa-situation-report-229-humanitarian-crisis-gaza-strip-and-occupied-west-bank", []]
+  ["https://www.unrwa.org/sites/default/files/content/resources/downloads_unrwa_gaza_sitrep_232.pdf", []]
 ]);
 
 const urls = [...new Set(records.map(item => item.source_url))].sort();
