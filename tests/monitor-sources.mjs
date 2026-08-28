@@ -3,11 +3,13 @@ import { readFile } from "node:fs/promises";
 const records = JSON.parse(await readFile(new URL("../data.json", import.meta.url), "utf8"));
 const signatures = new Map([
   ["https://www.ochaopt.org/content/humanitarian-situation-report-14-august-2026", ["humanitarian situation report", "14 august 2026"]],
+  ["https://www.ochaopt.org/content/reported-impact-snapshot-gaza-strip-19-august-2026", ["reported impact snapshot", "19 august 2026"]],
   ["https://www.ochaopt.org/page/protection-cluster-service-directory-dashboard", ["service directory", "sawa hotline"]],
   ["https://sawa.ps/ar/program/1", ["164"]],
   ["https://www.who.int/publications/m/item/herams-opt-gaza-infographics-2026-07", ["herams", "31 july 2026"]],
   ["https://www.wfp.org/emergencies/palestine-emergency", ["state of palestine", "food assistance"]],
-  ["https://www.unrwa.org/sites/default/files/content/resources/downloads_unrwa_gaza_sitrep_232.pdf", []]
+  ["https://www.unrwa.org/sites/default/files/content/resources/downloads_unrwa_gaza_sitrep_232.pdf", []],
+  ["https://www.unrwa.org/resources/reports/unrwa-situation-report-233-humanitarian-crisis-gaza-strip-and-occupied-west-bank", []]
 ]);
 
 const urls = [...new Set(records.map(item => item.source_url))].sort();
