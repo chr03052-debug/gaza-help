@@ -62,7 +62,7 @@ jobs:
         shell: bash
         run: |
           git fetch --no-tags origin "$BASE_REF"
-          if git diff --unified=0 "origin/$BASE_REF"...HEAD -- data.json index.html app.js sources.html privacy.html |
+          if git diff --unified=0 "origin/$BASE_REF"...HEAD -- data.json index.html app.js sources.html privacy.html changelog.html |
              grep --perl-regexp --quiet '^\+.*[\x{0600}-\x{06FF}]'; then
             if [[ "$ARABIC_REVIEWED" != "true" ]]; then
               if [[ ! -f .github/ARABIC_REVIEW_WAIVER ]] ||
